@@ -1,3 +1,7 @@
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+
 export default function Home() {
-  return <div className="text-4xl">ThankaAI</div>;
+  // const { setTheme } = useTheme();
+  return <div className="text-4xl">This is Home</div>;
 }
