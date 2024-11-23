@@ -3,14 +3,17 @@ import React from "react";
 import { Button } from "./ui/button";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
-  console.log("current theme is => ", theme);
   const isDark = theme === "dark";
 
   return (
-    <div className="border-b shadow-sm h-20 flex justify-center items-center">
+    <div className="w-full border-b-0 shadow-md h-16 flex justify-between items-center px-5">
+      <Link href={"/"}>
+        <h1 className="text-3xl font-normal">ThankaAI</h1>
+      </Link>
       {isDark ? (
         <Button onClick={() => setTheme("light")} variant={"outline"}>
           <Sun />
