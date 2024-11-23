@@ -17,8 +17,8 @@ export default function Home() {
       }}
       transition={{ duration: 1 }}
     >
-      <h1 className="text-7xl font-semibold">ThankaAI</h1>
-      <p className="w-1/2 text-center mt-3 text-gray-500 text-xl">
+      <h1 className="text-4xl md:text-5xl md:font-semibold">ThangkaAI</h1>
+      <p className="px-5 w-full  mt-5 sm:w-2/3 lg:w-2/5 text-center md:mt-3 text-gray-500 text-md md:text-xl">
         An AI platform transforming text prompts into stunning visual art with
         modern creativity. Unleash your imagination effortlessly!
       </p>
