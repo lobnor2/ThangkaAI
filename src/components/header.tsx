@@ -24,15 +24,18 @@ const Header = () => {
           ThangkaAI
         </h1>
       </Link>
-      {isDark ? (
-        <Button onClick={() => setTheme("light")} variant={"outline"}>
-          <Sun />
-        </Button>
-      ) : (
-        <Button onClick={() => setTheme("dark")} variant={"outline"}>
-          <Moon />
-        </Button>
-      )}
+      <div className="flex items-center gap-4">
+        {isDark ? (
+          <Button onClick={() => setTheme("light")}>
+            <Sun />
+          </Button>
+        ) : (
+          <Button onClick={() => setTheme("dark")}>
+            <Moon />
+          </Button>
+        )}
+        <Button>Login</Button>
+      </div>
     </div>
   );
 };
