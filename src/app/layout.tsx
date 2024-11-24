@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Head from "next/head";
+import TailwindIndicator from "@/components/tailwind-indicator";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -35,13 +36,14 @@ export default function RootLayout({
         <link rel="icon" href="/public/favicon.svg" />
       </Head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-dvh md:min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-dvh md:min-h-screen`}
       >
         <ThemeProvider attribute="class" defaultTheme="light">
           <Header />
           <main className="">{children}</main>
           <Footer />
         </ThemeProvider>
+        <TailwindIndicator />
       </body>
     </html>
   );
