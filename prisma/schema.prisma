@@ -6,6 +6,8 @@
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["interactiveTransactions"]
+  log =["query", "info", "warn", "error"]
 }
 
 datasource db {
