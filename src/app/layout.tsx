@@ -6,6 +6,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Head from "next/head";
 import TailwindIndicator from "@/components/tailwind-indicator";
+import Provider from "./provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,7 +22,7 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "ThankaAI",
   description:
-    "An AI-powered platform that transforms text prompts into stunning visual art, inspired by the intricate beauty of traditional Thangka paintings and modern creativity. Unleash your imagination and create unique images effortlessly!",
+    "An AI platform transforming text prompts into stunning visual art with modern creativity. Unleash your imagination effortlessly!",
 };
 
 export default function RootLayout({
@@ -39,9 +40,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-dvh md:min-h-screen`}
       >
         <ThemeProvider attribute="class" defaultTheme="light">
-          <Header />
-          <main className="">{children}</main>
-          <Footer />
+          <Provider>
+            <Header />
+            <main className="">{children}</main>
+            <Footer />
+          </Provider>
         </ThemeProvider>
         <TailwindIndicator />
       </body>
