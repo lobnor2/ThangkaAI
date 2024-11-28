@@ -5,6 +5,7 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import Image from "next/image";
+import { signIn } from "next-auth/react";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
@@ -34,7 +35,7 @@ const Header = () => {
             <Moon />
           </Button>
         )}
-        <Button>Login</Button>
+        <Button onClick={() => signIn()}>Login</Button>
       </div>
     </div>
   );
