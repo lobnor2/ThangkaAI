@@ -1,16 +1,25 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import Image from "next/image";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
   const isDark = theme === "dark";
+  const [initialLoading, setInitialLoading] = useState<boolean>(true);
 
+  const { data: session, status } = useSession();
+  useEffect(() => {
+    if (status != "loading") {
+      setInitialLoading(false);
+    }
+  }, [status, session]);
   return (
     <div className="w-full border-b-0 shadow-md h-16 flex justify-between items-center px-5">
       <Link href={"/"} className="flex items-center">
@@ -35,7 +44,16 @@ const Header = () => {
             <Moon />
           </Button>
         )}
-        <Button onClick={() => signIn()}>Login</Button>
+        {initialLoading && status === "loading" ? (
+          <Skeleton className="w-[40px] h-[40px] rounded-full" />
+        ) : !session ? (
+          <Button onClick={() => signIn("google")}>Login</Button>
+        ) : (
+          <Avatar>
+            <AvatarImage src={session.user?.image || ""} />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+        )}
       </div>
     </div>
   );
