@@ -21,7 +21,7 @@ const Header = () => {
     }
   }, [status, session]);
   return (
-    <div className="w-full border-b-0 shadow-md h-16 flex justify-between items-center px-5">
+    <div className="fixed bg-white top-0 w-full border-b-0 shadow-md h-16 flex justify-between items-center px-5">
       <Link href={"/"} className="flex items-center">
         <Image
           src={"/logo.svg"}
@@ -51,7 +51,7 @@ const Header = () => {
         ) : (
           <Avatar>
             <AvatarImage src={session.user?.image || ""} />
-            <AvatarFallback>CN</AvatarFallback>
+            <AvatarFallback>DP</AvatarFallback>
           </Avatar>
         )}
       </div>
