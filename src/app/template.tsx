@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
 
-const template = ({ children }: { children: ReactNode }) => {
+const Template = ({ children }: { children: ReactNode }) => {
   const path = usePathname();
   return (
     <motion.div
@@ -25,4 +25,4 @@ const template = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export default template;
+export default Template;
