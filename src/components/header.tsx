@@ -36,11 +36,11 @@ const Header = () => {
       </Link>
       <div className="flex items-center gap-4">
         {isDark ? (
-          <Button onClick={() => setTheme("light")}>
+          <Button onClick={() => setTheme("light")} variant={"outline"}>
             <Moon />
           </Button>
         ) : (
-          <Button onClick={() => setTheme("dark")}>
+          <Button onClick={() => setTheme("dark")} variant={"outline"}>
             <Sun />
           </Button>
         )}
