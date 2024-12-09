@@ -37,11 +37,11 @@ const Header = () => {
       <div className="flex items-center gap-4">
         {isDark ? (
           <Button onClick={() => setTheme("light")}>
-            <Sun />
+            <Moon />
           </Button>
         ) : (
           <Button onClick={() => setTheme("dark")}>
-            <Moon />
+            <Sun />
           </Button>
         )}
         {initialLoading && status === "loading" ? (

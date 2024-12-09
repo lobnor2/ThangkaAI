@@ -2,7 +2,7 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div className="border border-red-500 w-full h-dvh flex flex-col">
+    <div className="border border-red-500 w-full h-[calc(100vh-4rem-2.5rem)] flex flex-col">
       <div className="w-full flex flex-col items-center">
         <h1 className="text-3xl">Create</h1>
         <p className="text-gray-500 text-lg">
