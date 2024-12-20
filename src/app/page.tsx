@@ -50,7 +50,7 @@ export default function Home() {
           scale: 1,
           filter: "blur(0px)",
         }}
-        transition={{ duration: 1, delay: 0.8 }}
+        transition={{ duration: 1, delay: 0.5 }}
       >
         <Link href={"/create"}>
           <Button className="mt-5">Start Creating</Button>
