@@ -55,7 +55,7 @@ const Page = () => {
               <form onSubmit={form.handleSubmit(onSubmit)} className="">
                 <FormField
                   control={form.control}
-                  name="username"
+                  name="prompt"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Username</FormLabel>
