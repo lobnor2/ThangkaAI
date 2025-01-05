@@ -8,15 +8,15 @@ import { z } from "zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 
 const formSchema = z.object({
-  prompt: z.string().min(5),
+  prompt: z
+    .string()
+    .min(7, { message: "Prompt must be atleast 7 characters long" }),
 });
 
 const Page = () => {
@@ -27,7 +27,7 @@ const Page = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      prompt: "a child playing football near river",
+      prompt: "",
     },
   });
 
@@ -50,26 +50,25 @@ const Page = () => {
           <p className="mb-4">
             Type your prompt below to create any image you can imagine
           </p>
-          <div className="flex gap-3 w-full">
+          <div className=" w-full">
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="">
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="flex gap-3 w-2/3 justify-between"
+              >
                 <FormField
                   control={form.control}
                   name="prompt"
                   render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Username</FormLabel>
+                    <FormItem className="w-full flex flex-wrap">
                       <FormControl>
                         <Input
                           type="text"
                           placeholder="a child playing football near river"
-                          className="w-full"
+                          className=""
                           {...field}
                         />
                       </FormControl>
-                      <FormDescription>
-                        This is your public display name.
-                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
