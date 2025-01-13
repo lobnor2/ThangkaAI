@@ -3,5 +3,16 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
   const { prompt } = await request.json();
 
-  return NextResponse.json({ message: "POST", body: prompt });
+  function generateRandomNumber(): number {
+    return Math.floor(Math.random() * 10000) + 1;
+  }
+  const randomSeed = generateRandomNumber();
+
+  const imageURL = `https://image.pollinations.ai/prompt/${encodeURIComponent(
+    prompt
+  )}&seed=${randomSeed}`;
+
+  await fetch(imageURL);
+
+  return NextResponse.json({ url: imageURL });
 }
