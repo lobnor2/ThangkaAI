@@ -31,8 +31,18 @@ const Page = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setLoading(true);
+    const response = await fetch("/api/image", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ prompt: values.prompt }),
+    });
+    const data = await response.json();
+    setOutputImg(data.url);
+    setLoading(false);
   }
 
   return (
@@ -44,7 +54,7 @@ const Page = () => {
         </p>
       </div>
       <div className="flex flex-col lg:flex-row gap-5 px-5 h-full">
-        <div className="lg:flex-[2] border border-green-500 flex flex-col items-start justify-center">
+        <div className="lg:flex-[1] border border-green-500 flex flex-col items-start justify-center">
           <p className="mb-4">
             Type your prompt below to create any image you can imagine
           </p>
@@ -77,7 +87,16 @@ const Page = () => {
           </div>
         </div>
         <div className="lg:flex-[1] border border-green-500 flex items-center justify-center">
-          right less space
+          {loading ? (
+            <p>Generating Image...</p>
+          ) : outputImg ? (
+            <img src={outputImg} className="w-[90%]" />
+          ) : (
+            <p>
+              Unable to generate image for your prompt. Please try different
+              prompt.
+            </p>
+          )}
         </div>
       </div>
     </div>
