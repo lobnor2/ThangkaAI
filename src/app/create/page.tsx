@@ -48,32 +48,29 @@ const Page = () => {
   return (
     <div className=" w-full h-[calc(100vh-4rem-2.5rem)] flex flex-col">
       <div className="w-full flex flex-col items-center">
-        <h1 className="text-3xl">Create</h1>
+        <h1 className="text-3xl mt-3">Create</h1>
         <p className="text-gray-500 text-lg">
           Generate Stunning Images from Text
         </p>
       </div>
       <div className="flex flex-col lg:flex-row gap-5 px-5 h-full">
-        <div className="lg:flex-[1] border border-green-500 flex flex-col items-start justify-center">
-          <p className="mb-4">
+        <div className="lg:flex-[1] flex flex-col items-start justify-center">
+          <p className="mb-1 mt-5">
             Type your prompt below to create any image you can imagine
           </p>
-          <div className=" w-full">
+          <div className="w-full">
             <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="flex gap-3 w-2/3 justify-between"
-              >
+              <form onSubmit={form.handleSubmit(onSubmit)} className="">
                 <FormField
                   control={form.control}
                   name="prompt"
                   render={({ field }) => (
-                    <FormItem className="w-full flex flex-wrap">
+                    <FormItem className="">
                       <FormControl>
                         <Input
                           type="text"
                           placeholder="a child playing football near river"
-                          className=""
+                          className="mb-2"
                           {...field}
                         />
                       </FormControl>
@@ -81,21 +78,25 @@ const Page = () => {
                     </FormItem>
                   )}
                 />
-                <Button type="submit">Generate</Button>
+                <Button type="submit" className="text-right w-full">
+                  Generate
+                </Button>
               </form>
             </Form>
           </div>
         </div>
-        <div className="lg:flex-[1] border border-green-500 flex items-center justify-center">
+        <div className="lg:flex-[1] flex items-center justify-center">
           {loading ? (
             <p>Generating Image...</p>
           ) : outputImg ? (
-            <img src={outputImg} className="w-[90%]" />
+            <img
+              src={outputImg}
+              className="w-[100%] md:w-[90%]"
+              width={512}
+              height={512}
+            />
           ) : (
-            <p>
-              Unable to generate image for your prompt. Please try different
-              prompt.
-            </p>
+            <p>Enter your prompt and click generate to see the magic happen</p>
           )}
         </div>
       </div>
