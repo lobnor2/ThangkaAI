@@ -1,6 +1,12 @@
+import { authOptions } from "@/utils/authOptions";
+import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
+  const session = getServerSession(authOptions);
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized", status: 401 });
+  }
   const { prompt } = await request.json();
 
   function generateRandomNumber(): number {
@@ -10,7 +16,7 @@ export async function POST(request: NextRequest) {
 
   const imageURL = `https://image.pollinations.ai/prompt/${encodeURIComponent(
     prompt
-  )}?seed=${randomSeed}&width=512&height=512&noLogo=True`;
+  )}?seed=${randomSeed}&width=512&height=512&nologo=True`;
 
   await fetch(imageURL);
 
