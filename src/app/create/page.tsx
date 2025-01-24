@@ -78,7 +78,7 @@ const Page = () => {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="text-right w-full">
+                <Button type="submit" className="text-right w-full mt-3">
                   Generate
                 </Button>
               </form>
