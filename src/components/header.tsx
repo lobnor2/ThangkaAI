@@ -5,7 +5,7 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import Image from "next/image";
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -34,7 +34,7 @@ const Header = () => {
           ThangkaAI
         </h1>
       </Link>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center justify-center gap-4">
         {isDark ? (
           <Button onClick={() => setTheme("light")} variant={"outline"}>
             <Moon />
@@ -49,10 +49,15 @@ const Header = () => {
         ) : !session ? (
           <Button onClick={() => signIn("google")}>Login</Button>
         ) : (
-          <Avatar>
-            <AvatarImage src={session.user?.image || ""} />
-            <AvatarFallback>DP</AvatarFallback>
-          </Avatar>
+          <div className="flex items-center justify-center gap-4">
+            <Avatar>
+              <AvatarImage src={session.user?.image || ""} />
+              <AvatarFallback>DP</AvatarFallback>
+            </Avatar>
+            <Button variant={"outline"} onClick={() => signOut()}>
+              Logout
+            </Button>
+          </div>
         )}
       </div>
     </div>
