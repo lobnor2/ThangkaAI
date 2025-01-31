@@ -12,6 +12,7 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
+import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   prompt: z
@@ -23,6 +24,7 @@ const Page = () => {
   const [outputImg, setOutputImg] = useState<string | null>(null);
   const [inputPrompt, setInputPrompt] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -32,17 +34,32 @@ const Page = () => {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setLoading(true);
-    const response = await fetch("/api/image", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ prompt: values.prompt }),
-    });
-    const data = await response.json();
-    setOutputImg(data.url);
-    setLoading(false);
+    try {
+      setLoading(true);
+      const response = await fetch("/api/image", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ prompt: values.prompt }),
+      });
+      const data = await response.json();
+      if (response.status === 200) {
+        console.log("start of try if block", response.status);
+        setOutputImg(data.url);
+        console.log("end of try if block");
+      } else {
+        console.log(data.error);
+        toast({
+          variant: "destructive",
+          description: data.error,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (

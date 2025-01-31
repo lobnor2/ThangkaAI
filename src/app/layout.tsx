@@ -7,6 +7,7 @@ import Footer from "@/components/footer";
 import Head from "next/head";
 import TailwindIndicator from "@/components/tailwind-indicator";
 import Provider from "./provider";
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -43,6 +44,7 @@ export default function RootLayout({
           <Provider>
             <Header />
             <main className="">{children}</main>
+            <Toaster />
             <Footer />
           </Provider>
         </ThemeProvider>
