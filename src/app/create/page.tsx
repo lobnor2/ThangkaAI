@@ -47,7 +47,6 @@ const Page = () => {
       if (response.status === 200) {
         setOutputImg(data.url);
       } else {
-        console.log(data.error);
         toast({
           variant: "destructive",
           description: data.error,
