@@ -50,10 +50,12 @@ const Header = () => {
           <Button onClick={() => signIn("google")}>Login</Button>
         ) : (
           <div className="flex items-center justify-center gap-4">
-            <Avatar>
-              <AvatarImage src={session.user?.image || ""} />
-              <AvatarFallback>DP</AvatarFallback>
-            </Avatar>
+            <Link href={"/profile"}>
+              <Avatar>
+                <AvatarImage src={session.user?.image || ""} />
+                <AvatarFallback>DP</AvatarFallback>
+              </Avatar>
+            </Link>
             <Button variant={"outline"} onClick={() => signOut()}>
               Logout
             </Button>
