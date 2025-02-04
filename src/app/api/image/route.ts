@@ -6,10 +6,14 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
   const session = await getServerSession(authOptions);
   if (!session) {
-    return NextResponse.json({
-      error: "Unauthorized, Please Login",
-      status: 401,
-    });
+    return NextResponse.json(
+      {
+        error: "Unauthorized, Please Login",
+      },
+      {
+        status: 401,
+      }
+    );
   }
   const { prompt } = await request.json();
 
@@ -18,7 +22,7 @@ export async function POST(request: NextRequest) {
   });
 
   if (!user) {
-    return NextResponse.json({ error: "No user found", status: 401 });
+    return NextResponse.json({ error: "No user found" }, { status: 401 });
   }
 
   function generateRandomNumber(): number {

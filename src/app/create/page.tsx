@@ -45,9 +45,7 @@ const Page = () => {
       });
       const data = await response.json();
       if (response.status === 200) {
-        console.log("start of try if block", response.status);
         setOutputImg(data.url);
-        console.log("end of try if block");
       } else {
         console.log(data.error);
         toast({
