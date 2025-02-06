@@ -42,6 +42,7 @@ export async function POST(request: NextRequest) {
       prompt: prompt,
       url: imageURL,
       seed: randomSeed,
+      User: { connect: { id: session.user.id } },
     },
   });
 
