@@ -1,6 +1,7 @@
 "use client";
 import { Post } from "@prisma/client";
 import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 const Profile = () => {
@@ -34,7 +35,7 @@ const Profile = () => {
         {loading ? (
           "loading..."
         ) : (
-          <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+          <div className=" grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
             <AnimatePresence mode="wait">
               {posts.map((post: any, index) => {
                 return (
@@ -45,9 +46,11 @@ const Profile = () => {
                     animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                     transition={{ duration: 0.2, delay: index * 0.05 }}
                   >
-                    <img
+                    <Image
                       src={post.url}
                       alt={post.prompt}
+                      width={250}
+                      height={250}
                       className="w-full mb-2 rounded-lg"
                     />
                     <p className="text-gray-500">"{post.prompt}"</p>
