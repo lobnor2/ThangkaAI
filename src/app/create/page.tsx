@@ -13,6 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
+import Image from "next/image";
 
 const formSchema = z.object({
   prompt: z
@@ -103,11 +104,12 @@ const Page = () => {
           {loading ? (
             <p>Generating Image...</p>
           ) : outputImg ? (
-            <img
+            <Image
               src={outputImg}
               className="w-[100%] md:w-[90%]"
               width={512}
               height={512}
+              alt={inputPrompt}
             />
           ) : (
             <p>Enter your prompt and click generate to see the magic happen</p>

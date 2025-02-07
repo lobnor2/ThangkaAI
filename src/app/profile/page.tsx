@@ -37,7 +37,7 @@ const Profile = () => {
         ) : (
           <div className=" grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
             <AnimatePresence mode="wait">
-              {posts.map((post: any, index) => {
+              {posts.map((post, index) => {
                 return (
                   <motion.div
                     key={post.id}
