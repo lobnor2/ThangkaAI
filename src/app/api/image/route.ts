@@ -48,8 +48,8 @@ export async function POST(request: NextRequest) {
       prompt: prompt,
       url: imageURL,
       seed: randomSeed,
-      userId: session.user.id,
-      //   User: { connect: { id: session.user.id } },
+      //   userId: session.user.id,
+      User: { connect: { id: session.user.id } },
     },
   });
 
