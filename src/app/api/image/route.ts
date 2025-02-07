@@ -35,14 +35,21 @@ export async function POST(request: NextRequest) {
     prompt
   )}?seed=${randomSeed}&width=512&height=512&nologo=True`;
 
-  await fetch(imageURL);
+  const response = await fetch(imageURL);
+  if (!response.ok) {
+    return NextResponse.json(
+      { error: "Failed to fetch image" },
+      { status: response.status }
+    );
+  }
 
   await prisma.post.create({
     data: {
       prompt: prompt,
       url: imageURL,
       seed: randomSeed,
-      User: { connect: { id: session.user.id } },
+      userId: session.user.id,
+      //   User: { connect: { id: session.user.id } },
     },
   });
 
