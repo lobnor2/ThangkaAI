@@ -53,7 +53,7 @@ const Profile = () => {
                       height={250}
                       className="w-full mb-2 rounded-lg"
                     />
-                    <p className="text-gray-500">"{post.prompt}"</p>
+                    <p className="text-gray-500">&quot;{post.prompt}&quot;</p>
                   </motion.div>
                 );
               })}
