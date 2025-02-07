@@ -1,5 +1,6 @@
 "use client";
 import { Post } from "@prisma/client";
+import { AnimatePresence, motion } from "motion/react";
 import React, { useEffect, useState } from "react";
 
 const Profile = () => {
@@ -34,18 +35,26 @@ const Profile = () => {
           "loading..."
         ) : (
           <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-            {posts.map((post: any) => {
-              return (
-                <div key={post.id} className="   mb-6 p-1">
-                  <img
-                    src={post.url}
-                    alt={post.prompt}
-                    className="w-full mb-2 rounded-lg"
-                  />
-                  <p className="text-gray-500">"{post.prompt}"</p>
-                </div>
-              );
-            })}
+            <AnimatePresence mode="wait">
+              {posts.map((post: any, index) => {
+                return (
+                  <motion.div
+                    key={post.id}
+                    className="mb-6 p-1"
+                    initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                    transition={{ duration: 0.2, delay: index * 0.05 }}
+                  >
+                    <img
+                      src={post.url}
+                      alt={post.prompt}
+                      className="w-full mb-2 rounded-lg"
+                    />
+                    <p className="text-gray-500">"{post.prompt}"</p>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
           </div>
         )}
       </div>
