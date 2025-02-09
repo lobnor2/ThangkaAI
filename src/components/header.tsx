@@ -25,7 +25,7 @@ const Header = () => {
     signOut({ callbackUrl: "/" });
   };
   return (
-    <div className="w-full border-b-0 shadow-md h-16 flex justify-between items-center px-5">
+    <div className="w-full h-16 flex justify-between items-center px-5">
       <Link href={"/"} className="flex items-center">
         <Image
           src={"/logo.svg"}
