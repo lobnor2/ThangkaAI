@@ -33,19 +33,19 @@ const Profile = () => {
         Your Generated Images
       </h1>
       <div>
-        {posts.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-[80vh]">
-            <p className="text-3xl mb-5 text-gray-500">
-              😢 Sorry your gallery is empty
-            </p>
-            <Link href={"/create"}>
-              <Button>Go to Create</Button>
-            </Link>
-          </div>
+        {loading ? (
+          <div className="text-center">loading...</div>
         ) : (
-          <div className="w-full min-h-dvh flex justify-center items-center p-2">
-            {loading ? (
-              "loading..."
+          <div className="w-full flex justify-center p-2 min-h-[calc(100vh-12rem)]">
+            {posts.length === 0 ? (
+              <div className="flex flex-col items-center justify-center h-[80vh]">
+                <p className="text-3xl mb-5 text-gray-500">
+                  😢 Sorry your gallery is empty
+                </p>
+                <Link href={"/create"}>
+                  <Button>Go to Create</Button>
+                </Link>
+              </div>
             ) : (
               <div className=" grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
                 <AnimatePresence mode="wait">
