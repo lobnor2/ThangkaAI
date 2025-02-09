@@ -20,6 +20,11 @@ const Header = () => {
       setInitialLoading(false);
     }
   }, [status, session]);
+
+  const handleSignOut = () => {
+    signOut();
+    window.location.href = "/";
+  };
   return (
     <div className="w-full border-b-0 shadow-md h-16 flex justify-between items-center px-5">
       <Link href={"/"} className="flex items-center">
@@ -56,7 +61,7 @@ const Header = () => {
                 <AvatarFallback>DP</AvatarFallback>
               </Avatar>
             </Link>
-            <Button variant={"outline"} onClick={() => signOut()}>
+            <Button variant={"outline"} onClick={handleSignOut}>
               Logout
             </Button>
           </div>
