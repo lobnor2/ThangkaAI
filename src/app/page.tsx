@@ -1,9 +1,27 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
+import { authOptions } from "@/utils/authOptions";
+import { getServerSession } from "next-auth";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [session, setSession] = useState<any>(null);
+
+  // const getSession = async () => {
+  //   try {
+  //     const session = await getServerSession(authOptions);
+  //     setSession(session);
+  //     console.log("this is session data", session);
+  //   } catch (error) {
+  //     console.log("this is error from session", error);
+  //   }
+  // };
+  // useEffect(() => {
+  //   getSession();
+  // }, []);
+
   return (
     <div className="flex flex-col justify-center items-center h-[calc(100vh-4rem-2.5rem)] w-full">
       <motion.div
@@ -56,9 +74,11 @@ export default function Home() {
         <Link href={"/create"}>
           <Button className="">Start Creating</Button>
         </Link>
-        <Link href={"/profile"}>
-          <Button variant={"outline"}>Go to profile</Button>
-        </Link>
+        {session && (
+          <Link href={"/profile"}>
+            <Button variant={"outline"}>Go to profile</Button>
+          </Link>
+        )}
       </motion.div>
     </div>
   );
