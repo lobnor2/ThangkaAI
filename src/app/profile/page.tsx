@@ -34,9 +34,11 @@ const Profile = () => {
       </h1>
       <div>
         {loading ? (
-          <div className="text-center">loading...</div>
+          <div className="text-center min-h-[calc(100vh-11.5rem)]">
+            loading...
+          </div>
         ) : (
-          <div className="w-full flex justify-center p-2 min-h-[calc(100vh-12rem)]">
+          <div className="w-full flex justify-center p-2 min-h-[calc(100vh-11.5rem)]">
             {posts.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-[80vh]">
                 <p className="text-3xl mb-5 text-gray-500">
@@ -47,7 +49,7 @@ const Profile = () => {
                 </Link>
               </div>
             ) : (
-              <div className=" grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
                 <AnimatePresence mode="wait">
                   {posts.map((post, index) => {
                     return (
