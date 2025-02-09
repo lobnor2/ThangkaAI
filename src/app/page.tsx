@@ -40,6 +40,7 @@ export default function Home() {
         modern creativity. Unleash your imagination effortlessly!
       </motion.p>
       <motion.div
+        className="flex justify-center items-center gap-3 mt-5"
         initial={{
           opacity: 0,
           scale: 0.95,
@@ -53,7 +54,10 @@ export default function Home() {
         transition={{ duration: 1, delay: 0.5 }}
       >
         <Link href={"/create"}>
-          <Button className="mt-5">Start Creating</Button>
+          <Button className="">Start Creating</Button>
+        </Link>
+        <Link href={"/profile"}>
+          <Button variant={"outline"}>Go to profile</Button>
         </Link>
       </motion.div>
     </div>
