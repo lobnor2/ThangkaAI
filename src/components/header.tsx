@@ -22,8 +22,7 @@ const Header = () => {
   }, [status, session]);
 
   const handleSignOut = () => {
-    signOut();
-    // window.location.href = "/";
+    signOut({ callbackUrl: "/" });
   };
   return (
     <div className="w-full border-b-0 shadow-md h-16 flex justify-between items-center px-5">
