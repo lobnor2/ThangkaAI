@@ -23,7 +23,7 @@ const Header = () => {
 
   const handleSignOut = () => {
     signOut();
-    window.location.href = "/";
+    // window.location.href = "/";
   };
   return (
     <div className="w-full border-b-0 shadow-md h-16 flex justify-between items-center px-5">
