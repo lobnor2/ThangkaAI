@@ -49,35 +49,41 @@ const Profile = () => {
                 </Link>
               </div>
             ) : (
-              <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-                <AnimatePresence mode="wait">
-                  {posts.map((post, index) => {
-                    return (
-                      <motion.div
-                        key={post.id}
-                        className="mb-6 p-1"
-                        initial={{
-                          opacity: 0,
-                          scale: 0.9,
-                          filter: "blur(10px)",
-                        }}
-                        animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                        transition={{ duration: 0.2, delay: index * 0.05 }}
-                      >
-                        <Image
-                          src={post.url}
-                          alt={post.prompt}
-                          width={250}
-                          height={250}
-                          className="w-full mb-2 rounded-lg"
-                        />
-                        <p className="text-gray-500">
-                          &quot;{post.prompt}&quot;
-                        </p>
-                      </motion.div>
-                    );
-                  })}
-                </AnimatePresence>
+              <div>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                  <AnimatePresence mode="wait">
+                    {posts.map((post, index) => {
+                      return (
+                        <motion.div
+                          key={post.id}
+                          className="mb-6 p-1"
+                          initial={{
+                            opacity: 0,
+                            scale: 0.9,
+                            filter: "blur(10px)",
+                          }}
+                          animate={{
+                            opacity: 1,
+                            scale: 1,
+                            filter: "blur(0px)",
+                          }}
+                          transition={{ duration: 0.2, delay: index * 0.05 }}
+                        >
+                          <Image
+                            src={post.url}
+                            alt={post.prompt}
+                            width={250}
+                            height={250}
+                            className="w-full mb-2 rounded-lg"
+                          />
+                          <p className="text-gray-500 overflow-y-scroll h-16 text-sm">
+                            &quot;{post.prompt}&quot;
+                          </p>
+                        </motion.div>
+                      );
+                    })}
+                  </AnimatePresence>
+                </div>
               </div>
             )}
           </div>
