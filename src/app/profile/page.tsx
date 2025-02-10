@@ -29,9 +29,15 @@ const Profile = () => {
   }, []);
   return (
     <div>
-      <h1 className="text-4xl text-center my-5 text-gray-600 font-normal">
+      <h1 className="text-4xl my-5 text-gray-600 font-normal text-center">
         Your Generated Images
       </h1>
+      <div className="text-right mx-3">
+        <Link href={"/create"}>
+          <Button variant={"outline"}>Create Image</Button>{" "}
+        </Link>
+      </div>
+
       <div>
         {loading ? (
           <div className="text-center min-h-[calc(100vh-11.5rem)]">
