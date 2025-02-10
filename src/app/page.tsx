@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [session, setSession] = useState<any>(null);
+  // const [session, setSession] = useState<any>(null);
 
   // const getSession = async () => {
   //   try {
@@ -74,11 +74,11 @@ export default function Home() {
         <Link href={"/create"}>
           <Button className="">Start Creating</Button>
         </Link>
-        {session && (
+        {/* {session && (
           <Link href={"/profile"}>
             <Button variant={"outline"}>Go to profile</Button>
           </Link>
-        )}
+        )} */}
       </motion.div>
     </div>
   );
